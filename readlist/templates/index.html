@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title> Cemhan Read List</title>
+</head>
+
+<body>
+    <div class="container" style="margin-top:50px;">
+        <h3> Read List </h3>
+        <hr>
+
+        <form action="/add" method="POST">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="ka">Kitap Adı</label>
+                <input type="text" name="kitap_adi"  class="form-control" id="inputkitapAdi" placeholder="Kitap Adını Giriniz...">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="kt">Tür</label>
+                <input type="text" name="kitap_tur" class="form-control" id="inputkitapTuru" placeholder="Kitap Türünü Giriniz...">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                  <label for="ya">Yazar Adı</label>
+                  <input type="text" name="yazar_adi"  class="form-control" id="inputyazarAdi" placeholder="Yazar Adını Giriniz...">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="l">Link</label>
+                <input type="text" name="kitap_link" class="form-control" id="inputkitapLink" placeholder="Kitap Linki Giriniz...">
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="nt">Notlar</label>
+                <textarea name="kitap_not" class="form-control" id="inputkitapNot" placeholder="Not Giriniz..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success"> Ekle</button>
+          </form>
+
+        <hr style="margin-top: 10px;">
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Kitap Adı</th>
+                <th scope="col">Tür</th>
+                <th scope="col">Yazar Adı</th>
+                <th scope="col">Link</th>
+                <th scope="col">Notlar</th>
+                <th scope="col">Vote</th>
+                <th scope="col">UpVote</th>
+                <th scope="col">DownVote</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for read in reads %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{read.kitap_adi}}</td>
+                    <td>{{read.kitap_tur}}</td>
+                    <td>{{read.yazar_adi}}</td>
+                    <td>{{read.link}}</td>
+                    <td>{{read.notlar}}</td>
+                    <td>{{read.votes}}</td>
+                    <td> <a href="/upvote/{{read.id}}" class="btn btn-info">  UpVote </a></td>
+                    <td> <a href="/downvote/{{read.id}}" class="btn btn-danger">  DownVote </a></td>
+                </tr>
+                {% endfor %}
+              
+            </tbody>
+          </table>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+</html>
