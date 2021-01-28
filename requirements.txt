@@ -4,5 +4,4 @@ flask-images==3.0.2
 flask-sqlalchemy==2.4.4
 flask-uploads==0.2.1
 sqlalchemy==1.3.22
-sqlite
 gunicorn
